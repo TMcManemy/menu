@@ -1,0 +1,17 @@
+{
+  "name": "menu",
+  "version": "1.0.0",
+  "description": "CLI for building monthly dinner menus",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "menu": "./bin/index.js"
+  },
+  "dependencies": {
+    "yargs": "^17.7.1"
+  }
+}
