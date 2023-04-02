@@ -100,6 +100,9 @@ for (var i = 2; i <= number_of_days; i++) {
 	}
 	dinnersEnjoyed.push(food);
 	console.log(`${i}: ${day_of_the_week}: ${food}`);
+
+	if (day_of_the_week === "Saturday")
+		console.log("");
 }
 
 
