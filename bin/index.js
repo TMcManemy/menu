@@ -45,10 +45,12 @@ var dinners = [
 	{name: "nacho beef skillet", tags: ["weekend","onepot"]},
 	{name: "mexican beef and rice cassrole", tags: ["weekend","onepot"]},
 ];
+var dinnersEnjoyed = [];
 
 const getRandomDinner = (array) => array[Math.floor(Math.random()*array.length)];
 var matchingDinners = dinners.filter((element) => element.tags.includes("easy"));
 var food = getRandomDinner(matchingDinners).name;
+dinnersEnjoyed.push(food);
 
 console.log(`1: ${first_day_of_the_month}: ${food}`);
 for (var i = 2; i <= number_of_days; i++) {
@@ -62,12 +64,14 @@ for (var i = 2; i <= number_of_days; i++) {
 	var day_of_the_week = days_of_the_week[day_of_the_week_position];
 
 	var tags = [];
+	var preventDuplicates = true;
 	switch(day_of_the_week) {
 		case "Monday":
 			tags = ["vegetarian"];
 			break;
 		case "Tuesday":
 			tags = ["tacos"];
+			preventDuplicates = false;
 			break;
 		case "Wednesday":
 			tags = ["easy"];
@@ -87,7 +91,14 @@ for (var i = 2; i <= number_of_days; i++) {
 	}
 
 	matchingDinners = dinners.filter((element) => element.tags.some((element) => tags.includes(element)));
-	food = getRandomDinner(matchingDinners).name;
+	if (preventDuplicates){
+		dinnersNotYetEnjoyed = matchingDinners.filter((element) => !dinnersEnjoyed.includes(element.name));
+		food = getRandomDinner(dinnersNotYetEnjoyed).name;
+	}
+	else {
+		food = getRandomDinner(matchingDinners).name;
+	}
+	dinnersEnjoyed.push(food);
 	console.log(`${i}: ${day_of_the_week}: ${food}`);
 }
 
