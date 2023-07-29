@@ -110,7 +110,8 @@ for (var i = 2; i <= number_of_days; i++) {
 	matchingDinners = dinners.filter((element) => element.tags.some((element) => tags.includes(element)));
 	if (preventDuplicates){
 		dinnersNotYetEnjoyed = matchingDinners.filter((element) => !dinnersEnjoyed.includes(element.name));
-		food = getRandomDinner(dinnersNotYetEnjoyed).name;
+	        var randomDinner = getRandomDinner(dinnersNotYetEnjoyed) || getRandomDinner(matchingDinners);
+		food = randomDinner.name;
 	}
 	else {
 		food = getRandomDinner(matchingDinners).name;
