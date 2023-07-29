@@ -12,7 +12,7 @@ var dinners = [
 	{name: "sloppy joes", tags: ["easy"]},
 	{name: "spaghetti", tags: ["easy"]},
 	{name: "hamburger helper", tags: ["easy"]},
-	{name: "tortellini soup", tags: ["easy"]},
+	{name: "tortellini soup", tags: ["easy", "vegetarian"]},
 	{name: "breakfast casserole", tags: ["slowcooker"]},
 	{name: "parmesan garlic spaghetti", tags: ["vegetarian"]},
 	{name: "garlic chicken penne pasta", tags: ["chicken"]},
