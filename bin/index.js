@@ -20,7 +20,7 @@ const tags = {
 var dinners = [
 	{name: "tacos", tags: [tags.tacos]},
 	{name: "sloppy joes", tags: [tags.easy]},
-	{name: "spaghetti", tags: [tags.easy]},
+	{name: "spaghetti", tags: [tags.easy], ignore: true},
 	{name: "hamburger helper", tags: [tags.easy]},
 	{name: "tortellini soup", tags: [tags.easy, tags.vegetarian]},
 	{name: "breakfast casserole", tags: [tags.slowcooker]},
@@ -49,7 +49,7 @@ var dinners = [
 	{name: "taco casserole", tags: [tags.weekend,tags.slowcooker]},
 	{name: "cream cheese chicken chili", tags: [tags.weekend,tags.slowcooker]},
 	{name: "creamy ranch chicken", tags: [tags.weekend,tags.slowcooker]},
-	{name: "pancakes", tags: [tags.vegetarian]},
+	{name: "pancakes", tags: [tags.vegetarian], notes: "heat skillet to 3; 45-50 seconds per side"},
 	{name: "dirty rice", tags: [tags.weekend,tags.onepot]},
 	{name: "chicken broccoli rice casserole", tags: [tags.weekend]},
 	{name: "nacho beef skillet", tags: [tags.weekend,tags.onepot]},
@@ -59,7 +59,7 @@ var dinners = [
 	{name: "sheet pan nachos", tags: [tags.weekend]},
 	{name: "spicy tomato cream pasta", tags: [tags.easy]},
 	{name: "white chicken chili", tags: [tags.weekend]},
-	{name: "grilled taco lime chicken", tags: [tags.weekend]},
+	{name: "grilled taco lime chicken", tags: [tags.weekend], notes: "heat skillet to 4"},
 	{name: "one pot beans, chicken, and rice", tags: [tags.chicken,tags.onepot]},
 	{name: "chili mac and chesse", tags: [tags.onepot]},
 	{name: "beefy potato taco casserole", tags: [tags.onepot]},
@@ -75,7 +75,7 @@ var dinners = [
 var dinnersEnjoyed = [];
 
 const getRandomDinner = (array) => array[Math.floor(Math.random()*array.length)];
-var matchingDinners = dinners.filter((element) => element.tags.includes(tags.easy));
+var matchingDinners = dinners.filter((element) => element.tags.includes(tags.easy) && !element.hasOwnProperty("ignore"));
 var food = getRandomDinner(matchingDinners).name;
 dinnersEnjoyed.push(food);
 
@@ -117,7 +117,7 @@ for (var i = 2; i <= number_of_days; i++) {
 			break;
 	}
 
-	matchingDinners = dinners.filter((element) => element.tags.some((element) => dinner_tags.includes(element)));
+	matchingDinners = dinners.filter((element) => element.tags.some((element) => dinner_tags.includes(element)) && !element.hasOwnProperty("ignore"));
 	if (preventDuplicates){
 		dinnersNotYetEnjoyed = matchingDinners.filter((element) => !dinnersEnjoyed.includes(element.name));
 	        var randomDinner = getRandomDinner(dinnersNotYetEnjoyed) || getRandomDinner(matchingDinners);
